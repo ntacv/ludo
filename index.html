@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+
+    <!--
+    no scripts 90ms
+    i18n scripts 120ms
+
+    5500 lines
+    no scripts 120ms
+    i18n scripts 160ms
+    i18n used 190ms
+    -->
+    <!--
+	Always force latest IE rendering engine (even in intranet) & Chrome Frame
+	Remove this if you use the .htaccess
+	-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>jQuery i18n Demo</title>
+    <meta name="author" content="Santhosh Thottingal" />
+    <!-- Libs -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <!--
+    <script src="https://github.com/wikimedia/jquery.i18n/tree/master/libs/CLDRPluralRuleParser/src/CLDRPluralRuleParser.js"></script>
+    -->
+
+    <!-- video demo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/11.6.0/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.1/jquery-i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/2.2.3/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-xhr-backend/1.5.1/i18nextXHRBackend.min.js"></script>
+
+    <!-- Demo -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="demo.js"></script>
+
+    <!-- Jquery lightSLider caroussel -->
+    <link type="text/css" rel="stylesheet" href="src/css/lightslider.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="src/js/lightslider.js"></script>
+    // Do not include both lightslider.js and lightslider.min.js
+    <script>
+      $(document).ready(function () {
+        $("#content-slider").lightSlider({
+          loop: true,
+          keyPress: true,
+        });
+        $("#image-gallery").lightSlider({
+          gallery: true,
+          item: 1,
+          thumbItem: 9,
+          slideMargin: 0,
+          speed: 500,
+          auto: true,
+          loop: true,
+          onSliderLoad: function () {
+            $("#image-gallery").removeClass("cS-hidden");
+          },
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="overview" class="subhead well">
+        <h1>jQuery i18n Demo</h1>
+        <p class="lead">jQuery i18n Demo</p>
+      </header>
+      <div class="lead">
+        Display the above sentence in
+        <select
+          class="language span3"
+          id="languageSelect"
+          onchange="changeLanguage();"
+        >
+          <option value="en"></option>
+          <option value="fr">French</option>
+          <option value="en">English</option>
+          <option value="de">German</option>
+          <option value="he">Hebrew</option>
+          <option value="es">Spanish</option>
+          <option value="fi">Finnish</option>
+          <option value="ml">Malayalam</option>
+          <option value="ru">Russian</option>
+          <option value="ta">Tamil</option>
+        </select>
+      </div>
+      <hr />
+
+      <div>
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('fr')">French</button>
+      </div>
+
+      <h2
+        data-i18n="title"
+        data-i18n="title"
+        data-i18n-options='{ "tech": "jquery", "lib": "jquery-i18next" }'
+      >
+        Welcome to jquery using jquery-i18next
+      </h2>
+
+      <div>
+        <a
+          href="https://play.google.com/store/apps/dev?id=7041662220443814739&pli=1&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+          target="_blank"
+          ><img
+            alt="Get it on Google Play"
+            width="150px"
+            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+        /></a>
+
+        <a
+          href="https://apps.apple.com/us/developer/ludo-vic/id1621267084"
+          target="_blank"
+        >
+          <img
+            alt="Get it on App Store"
+            src="src/img/icons/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+          />
+        </a>
+      </div>
+
+      <div class="item">
+        <div class="clearfix" style="max-width: 474px">
+          <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+            <li data-thumb="lightslider-master/demo/img/thumb/cS-1.jpg">
+              <img src="lightslider-master/demo/img/cS-1.jpg" />
+            </li>
+            <li data-thumb="lightslider-master/demo/img/thumb/cS-2.jpg">
+              <img src="lightslider-master/demo/img/cS-2.jpg" />
+            </li>
+            <li data-thumb="lightslider-master/demo/img/thumb/cS-3.jpg">
+              <img src="lightslider-master/demo/img/cS-3.jpg" />
+            </li>
+            <li data-thumb="lightslider-master/demo/img/thumb/cS-4.jpg">
+              <img src="lightslider-master/demo/img/cS-4.jpg" />
+            </li>
+            <li data-thumb="lightslider-master/demo/img/thumb/cS-5.jpg">
+              <img src="lightslider-master/demo/img/cS-5.jpg" />
+            </li>
+            <li data-thumb="lightslider-master/demo/img/thumb/cS-6.jpg">
+              <img src="lightslider-master/demo/img/cS-6.jpg" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
